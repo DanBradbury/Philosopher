@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>//init_deck(self);
 drawn_card = "";
+face_up[0] = "NONE";
+face_up[1] = "NONE";
+face_up[2] = "NONE";
 
 arsenic = global.basic;
 magnesium = global.basic;
@@ -113,27 +116,30 @@ for(i=1;i&lt;=card_count;i++){
 draw_set_color(c_red);
 draw_set_font(font0);
 draw_text(100,100,drawn_card);
-
-if(drawn_card=="ARSENIC")
-{
-    draw_sprite_ext(sprite7_ArsenicF,0,x+300,y,0.4, 0.4, 0, c_white, 1);
-}else if(drawn_card =="SULFUR"){
-    draw_sprite_ext(sprite24_Sulfur,0,x+300,y,0.4, 0.4, 0, c_white, 1);    
-}else if(drawn_card =="MAGNESIUM"){
-    draw_sprite_ext(sprite15_Magnesium,0,x+300,y,0.4, 0.4, 0, c_white, 1);    
-}else if(drawn_card =="ZINC"){
-    draw_sprite_ext(sprite29_Zinc,0,x+300,y,0.4, 0.4, 0, c_white, 1);    
-}else if(drawn_card =="AIR"){
-    draw_sprite_ext(sprite1_Air,0,x+300,y,0.4, 0.4, 0, c_white, 1);    
-}else if(drawn_card =="EARTH"){
-    draw_sprite_ext(sprite10_earth,0,x+300,y,0.4, 0.4, 0, c_white, 1);    
-}else if(drawn_card =="FIRE"){
-    draw_sprite_ext(sprite2_Alchemy_fire_final,0,x+300,y,0.4, 0.4, 0, c_white, 1);    
-}else if(drawn_card =="WATER"){
-    draw_sprite_ext(sprite27_Water,0,x+300,y,0.4, 0.4, 0, c_white, 1);    
-}else if(drawn_card =="PHILO"){
-    draw_sprite_ext(sprite19_PhilosophersStone,0,x+300,y,0.4, 0.4, 0, c_white, 1);    
+factor=300;
+for(i=0;i&lt;3;i++){   
+    if(face_up[i] =="ARSENIC"){
+        draw_sprite_ext(sprite7_ArsenicF,0,x+(i*factor)+300,y,0.4, 0.4, 0, c_white, 1);
+    }else if(face_up[i] =="SULFUR"){
+        draw_sprite_ext(sprite24_Sulfur,0,x+(i*factor)+300,y,0.4, 0.4, 0, c_white, 1);    
+    }else if(face_up[i] =="MAGNESIUM"){
+        draw_sprite_ext(sprite15_Magnesium,0,x+(i*factor)+300,y,0.4, 0.4, 0, c_white, 1);    
+    }else if(face_up[i] =="ZINC"){
+        draw_sprite_ext(sprite29_Zinc,0,x+(i*factor)+300,y,0.4, 0.4, 0, c_white, 1);    
+    }else if(face_up[i] =="AIR"){
+        draw_sprite_ext(sprite1_Air,0,x+(i*factor)+300,y,0.4, 0.4, 0, c_white, 1);    
+    }else if(face_up[i] =="EARTH"){
+        draw_sprite_ext(sprite10_earth,0,x+(i*factor)+300,y,0.4, 0.4, 0, c_white, 1);    
+    }else if(face_up[i] =="FIRE"){
+        draw_sprite_ext(sprite2_Alchemy_fire_final,0,x+(i*factor)+300,y,0.4, 0.4, 0, c_white, 1);    
+    }else if(face_up[i] =="WATER"){
+        draw_sprite_ext(sprite27_Water,0,x+(i*factor)+300,y,0.4, 0.4, 0, c_white, 1);    
+    }else if(face_up[i] =="PHILO"){
+        draw_sprite_ext(sprite19_PhilosophersStone,0,x+(i*factor)+300,y,0.4, 0.4, 0, c_white, 1);    
+    }
 }
+
+
 </string>
           </argument>
         </arguments>
@@ -156,7 +162,7 @@ if(drawn_card=="ARSENIC")
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_card(self);
+            <string>init_element_face_up(self);
 </string>
           </argument>
         </arguments>

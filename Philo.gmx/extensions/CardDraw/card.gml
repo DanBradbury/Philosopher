@@ -10,6 +10,23 @@
 	
 	return true;
 
+#define init_element_face_up
+	_deck = argument[0];
+	
+	for(i=0;i<3;i++){
+		draw_card(_deck);
+		_deck.face_up[i] = _deck.drawn_card;
+	}
+	
+	return true;
+	
+	
+#define discard_card
+	_discard = argument[0];
+	_card = argument[1];
+	
+	return false;
+	
 #define draw_card
 	_deck = argument[0]
 	
@@ -63,12 +80,6 @@
 			_deck.cards[7] -= 1;
 			_deck.drawn_card = "WATER";
 			_deck.card_count -= 1;
-			return true;
-		}
-		
-		else{
-			_deck.card_count -= 1;
-			_deck.drawn_card = "OTHER";
 			return true;
 		}
 	}

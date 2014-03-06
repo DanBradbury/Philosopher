@@ -1,5 +1,6 @@
 #define init_game
 	_players = argument[0];
+	global.player = _players;
 	switch(_players)
 		{
 		case 2: global.basic=6;global.philo=2;break;
@@ -7,9 +8,22 @@
 		case 4: global.basic=8;global.philo=4;break;
 		}
 	_element_deck = instance_create(0,0, obj_element_deck);
+	_process_deck = instance_create(0,0, obj_process_deck);
 	
 	return true;
-
+	
+#define init_process_deck
+	_deck = argument[0];
+	
+	switch(global.player)
+		{
+		case 2: _deck.distillation=10;_deck.incineration=10;_deck.transformation=10;card_count=30;break;
+		case 3: _deck.distillation=11;_deck.incineration=11;_deck.transformation=11;card_count=30;break;
+		case 4: _deck.distillation=12;_deck.incineration=12;_deck.transformation=12;card_count=30;break;
+		}
+	return true
+	
+	
 #define init_element_face_up
 	_deck = argument[0];
 	
@@ -19,6 +33,10 @@
 	}
 	
 	return true;
+
+#define select_element_face_up
+	_choice = argument[0];
+	
 	
 	
 #define discard_card

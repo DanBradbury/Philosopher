@@ -3,7 +3,7 @@
   <name>CardDraw</name>
   <version>1.0</version>
   <author></author>
-  <date>3/2/2014</date>
+  <date>3/6/2014</date>
   <license>Free to use, also for commercial games.</license>
   <description></description>
   <helpfile></helpfile>
@@ -51,6 +51,17 @@
           <returnType>2</returnType>
           <argCount>-1</argCount>
           <args/>
+        </function>
+        <function>
+          <name>init_process_deck</name>
+          <externalName>init_process_deck</externalName>
+          <kind>2</kind>
+          <help>init_process_deck</help>
+          <returnType>2</returnType>
+          <argCount>1</argCount>
+          <args>
+            <arg>2</arg>
+          </args>
         </function>
       </functions>
       <constants/>

@@ -4,7 +4,7 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions>
-    <extension index="5">extensions\CardDraw</extension>
+    <extension index="1">extensions\CardDraw</extension>
   </NewExtensions>
   <sounds name="sound"/>
   <sprites name="sprites">
@@ -49,12 +49,12 @@
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
-  <scripts name="scripts"/>
   <fonts name="fonts">
     <font>fonts\font0</font>
   </fonts>
   <objects name="objects">
     <object>objects\size_guage</object>
+    <object>objects\obj_process_deck</object>
     <object>objects\obj_element_deck</object>
     <object>objects\obj_ref</object>
   </objects>

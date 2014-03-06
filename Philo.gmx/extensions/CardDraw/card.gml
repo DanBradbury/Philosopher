@@ -28,7 +28,7 @@
 	_deck = argument[0];
 	
 	for(i=0;i<3;i++){
-		draw_card(_deck);
+		draw_element_card(_deck);
 		_deck.face_up[i] = _deck.drawn_card;
 	}
 	
@@ -44,8 +44,18 @@
 	_card = argument[1];
 	
 	return false;
+
+#define add_element_to_hand
+	_player = argument[0];
 	
-#define draw_card
+	draw_element_card(obj_element_deck);
+	_player.hand[_player.hand_size] = obj_element_deck.drawn_card;
+	_player.hand_size += 1;
+	
+	return true
+
+	
+#define draw_element_card
 	_deck = argument[0]
 	
 	if(_deck.card_count > 0 )

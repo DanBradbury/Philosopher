@@ -162,7 +162,8 @@ for(i=0;i&lt;3;i++){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>init_element_face_up(self);
+            <string>//init_element_face_up(self);
+add_element_to_hand(obj_player1);
 </string>
           </argument>
         </arguments>

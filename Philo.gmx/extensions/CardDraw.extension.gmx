@@ -33,10 +33,10 @@
           </args>
         </function>
         <function>
-          <name>draw_card</name>
-          <externalName>draw_card</externalName>
+          <name>draw_element_card</name>
+          <externalName>draw_element_card</externalName>
           <kind>2</kind>
-          <help>draw_card(obj_deck)</help>
+          <help>draw_element_card</help>
           <returnType>2</returnType>
           <argCount>1</argCount>
           <args>
@@ -57,6 +57,17 @@
           <externalName>init_process_deck</externalName>
           <kind>2</kind>
           <help>init_process_deck</help>
+          <returnType>2</returnType>
+          <argCount>1</argCount>
+          <args>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>add_element_to_hand</name>
+          <externalName>add_element_to_hand</externalName>
+          <kind>2</kind>
+          <help>add_element_to_hand</help>
           <returnType>2</returnType>
           <argCount>1</argCount>
           <args>

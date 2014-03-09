@@ -31,6 +31,35 @@ transformation = 0;
 card_count = 0;
 
 init_process_deck(self);
+_draw_selector = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(mouse_x &gt; x-sprite_xoffset+200 &amp;&amp; mouse_x &lt; x-sprite_xoffset+165+200 &amp;&amp; mouse_y &gt; y-sprite_yoffset &amp;&amp; mouse_y &lt; y-sprite_yoffset+282){
+    _draw_selector = true;
+}else{
+    _draw_selector = false;
+}
+
 </string>
           </argument>
         </arguments>
@@ -56,7 +85,15 @@ init_process_deck(self);
             <string>total_fanning = 1;
 
 for(i=1;i&lt;=card_count;i++){
-    draw_sprite_ext(sprite25_tarotback,0,x+total_fanning+200,y,0.2, 0.2, 0, c_white, 1);
+    draw_sprite_ext(sprite25_tarotback,0,x+total_fanning+200,y,0.1, 0.1, 0, c_white, 1);
+}
+
+draw_set_color(c_red);
+if(global._phase == "DRAW"){
+    draw_set_color(c_green);
+}
+if(_draw_selector==true){
+    draw_rectangle( x-sprite_xoffset+200, y-sprite_yoffset,x-sprite_xoffset+165+200, y-sprite_yoffset+282 ,true);
 }
 </string>
           </argument>

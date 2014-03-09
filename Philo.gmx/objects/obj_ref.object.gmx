@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>init_game(2);
+
+global._phase = "INIT";
 </string>
           </argument>
         </arguments>

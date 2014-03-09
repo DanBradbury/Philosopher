@@ -233,6 +233,7 @@ for(i=0;i&lt;3;i++){
     add_element_to_hand(obj_player1);
 }
 global._phase = "DRAW";
+
 </string>
           </argument>
         </arguments>

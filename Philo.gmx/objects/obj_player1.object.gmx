@@ -126,6 +126,12 @@ if(hand[i] =="ARSENIC"){
         draw_sprite_ext(sprite27_Water,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
     }else if(hand[i] =="PHILO"){
         draw_sprite_ext(sprite19_PhilosophersStone,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
+    }else if(hand[i] == "T"){
+        draw_sprite_ext(sprite26_transformation,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
+    }else if(hand[i] == "D"){
+        draw_sprite_ext(sprite9_Distillation,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);        
+    }else if(hand[i] == "I"){
+        draw_sprite_ext(sprite12_Incineration,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);        
     }
     
 // old
@@ -150,7 +156,13 @@ factor = selected*100; rotation = 0;
         draw_sprite_ext(sprite27_Water,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
     }else if(hand[selected] =="PHILO"){
         draw_sprite_ext(sprite19_PhilosophersStone,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
-    }
+    }else if(hand[selected] == "T"){
+        draw_sprite_ext(sprite26_transformation,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
+    }else if(hand[selected] == "D"){
+        draw_sprite_ext(sprite9_Distillation,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);        
+    }else if(hand[selected] == "I"){
+        draw_sprite_ext(sprite12_Incineration,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);        
+    }    
     draw_rectangle(view_xview[view_current]+view_wview[view_current]/2-300-124+factor,y+400-214, view_xview[view_current]+view_wview[view_current]/2-300+124+factor,y+400+ 428-214,true);
 
 }

@@ -86,6 +86,28 @@
             <arg>2</arg>
           </args>
         </function>
+        <function>
+          <name>draw_process_card</name>
+          <externalName>draw_process_card</externalName>
+          <kind>2</kind>
+          <help>draw_process_card</help>
+          <returnType>2</returnType>
+          <argCount>1</argCount>
+          <args>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>add_process_to_hand</name>
+          <externalName>add_process_to_hand</externalName>
+          <kind>2</kind>
+          <help>add_process_to_hand</help>
+          <returnType>2</returnType>
+          <argCount>1</argCount>
+          <args>
+            <arg>2</arg>
+          </args>
+        </function>
       </functions>
       <constants/>
     </file>

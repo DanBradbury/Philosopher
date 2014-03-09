@@ -21,6 +21,13 @@
 		case 3: _deck.distillation=11;_deck.incineration=11;_deck.transformation=11;card_count=30;break;
 		case 4: _deck.distillation=12;_deck.incineration=12;_deck.transformation=12;card_count=30;break;
 		}
+	
+	for(i=0;i<_deck.distillation;i++){
+		deck[i] = "D";
+		deck[i+_deck.distillation] = "I";
+		deck[i+_deck.distillation+_deck.incineration] = "T";
+	}
+	
 	return true
 	
 	
@@ -56,6 +63,15 @@
 	
 	return false;
 
+#define add_process_to_hand
+	_player = argument[0];
+	
+	draw_process_card(obj_process_deck);
+	_player.hand[_player.hand_size] = obj_process_deck.drawn_card;
+	_player.hand_size += 1;
+	
+	return true;
+
 #define add_element_to_hand
 	_player = argument[0];
 	
@@ -63,8 +79,18 @@
 	_player.hand[_player.hand_size] = obj_element_deck.drawn_card;
 	_player.hand_size += 1;
 	
-	return true
+	return true;
 
+#define draw_process_card
+	_deck = argument[0];
+	i = "none";
+	while(i == "none"){
+		r = irandom_range(0,_deck.card_count-1);
+		i = _deck.deck[r];
+	}
+	_deck.drawn_card = i;
+	
+	return true;
 	
 #define draw_element_card
 	_deck = argument[0]

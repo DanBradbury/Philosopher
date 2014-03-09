@@ -29,9 +29,11 @@
 incineration = 0;
 transformation = 0;
 card_count = 0;
+deck[0] = "none";
 
 init_process_deck(self);
 _draw_selector = false;
+drawn_card = "none";
 </string>
           </argument>
         </arguments>
@@ -60,6 +62,10 @@ _draw_selector = false;
     _draw_selector = false;
 }
 
+if(mouse_check_button(mb_left)&amp;&amp;_draw_selector&amp;&amp;global._phase=="DRAW"){
+    add_process_to_hand(obj_player1);
+    global._phase = "PLAY";
+}
 </string>
           </argument>
         </arguments>
@@ -95,6 +101,9 @@ if(global._phase == "DRAW"){
 if(_draw_selector==true){
     draw_rectangle( x, y-sprite_yoffset+290,x-sprite_xoffset+165, y-sprite_yoffset+282+290 ,true);
 }
+
+draw_set_font(font0);
+draw_text(x+total_fanning,y+290,drawn_card);
 </string>
           </argument>
         </arguments>

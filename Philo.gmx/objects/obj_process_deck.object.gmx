@@ -54,7 +54,7 @@ _draw_selector = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(mouse_x &gt; x-sprite_xoffset+200 &amp;&amp; mouse_x &lt; x-sprite_xoffset+165+200 &amp;&amp; mouse_y &gt; y-sprite_yoffset &amp;&amp; mouse_y &lt; y-sprite_yoffset+282){
+            <string>if(mouse_x &gt; x &amp;&amp; mouse_x &lt; x+165 &amp;&amp; mouse_y &gt; y+290 &amp;&amp; mouse_y &lt; y+282+290){
     _draw_selector = true;
 }else{
     _draw_selector = false;
@@ -85,7 +85,7 @@ _draw_selector = false;
             <string>total_fanning = 1;
 
 for(i=1;i&lt;=card_count;i++){
-    draw_sprite_ext(sprite25_tarotback,0,x+total_fanning+200,y,0.1, 0.1, 0, c_white, 1);
+    draw_sprite_ext(sprite25_tarotback,0,x+total_fanning,y+290,0.1, 0.1, 0, c_white, 1);
 }
 
 draw_set_color(c_red);
@@ -93,7 +93,7 @@ if(global._phase == "DRAW"){
     draw_set_color(c_green);
 }
 if(_draw_selector==true){
-    draw_rectangle( x-sprite_xoffset+200, y-sprite_yoffset,x-sprite_xoffset+165+200, y-sprite_yoffset+282 ,true);
+    draw_rectangle( x, y-sprite_yoffset+290,x-sprite_xoffset+165, y-sprite_yoffset+282+290 ,true);
 }
 </string>
           </argument>

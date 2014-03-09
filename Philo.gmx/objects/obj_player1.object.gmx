@@ -81,7 +81,9 @@ for(i=0;i&lt;hand_size;i++){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global._phase == "DRAW"){
+            <string>draw_sprite_ext(sprite8_blue_player_mat, 0, view_xview[view_current]+view_wview[view_current]/2+50, 0, 0.5, 0.5, 0, c_white, 1);
+
+if(global._phase == "DRAW"){
     draw_set_color(c_green);
 }else{
     draw_set_color(c_red);

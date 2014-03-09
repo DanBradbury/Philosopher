@@ -54,7 +54,14 @@ global._phase = "INIT";
     if(obj_player1._play_formulation==false){
         global._phase = "TRANSMUTATION";
     }
+}else if(global._phase == "return cards"){
+    global._phase = global._active_phase;
+}else if(global._phase == "DISCARD"){
+    // perform discard check
+    global._phase = "DRAW";
 }
+
+
 </string>
           </argument>
         </arguments>

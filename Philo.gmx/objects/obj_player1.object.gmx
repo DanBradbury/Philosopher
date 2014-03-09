@@ -41,6 +41,29 @@ process_played = 0;
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string> global._phase = global._active_phase;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
@@ -117,9 +140,13 @@ if(mouse_check_button(mb_left)){
         mouse_y &gt; view_hview[view_current]-150 &amp;&amp;
         mouse_y &lt;  view_hview[view_current]){
             if(global._phase == "FORMULATION"){
-                global._phase = "TRANMUTAION";
-            }else if(global._phase == "TRANSMUTATION" || global._phase == "FORMULATION"){
-                global._phase = "DISCARD";
+                global._active_phase = "TRANMUTAION";
+                global._phase = "IDLE";
+                alarm[1] = 10;
+            }else if(global._phase == "TRANMUTAION"){
+                global._active_phase = "DISCARD";
+                global._phase = "IDLE";
+                alarm[1] = 10;
             }
         
     }
@@ -131,7 +158,7 @@ if(mouse_check_button(mb_left)){
         mouse_x &lt; view_wview[view_current] &amp;&amp;
         mouse_y &gt; view_hview[view_current]-150 &amp;&amp;
         mouse_y &lt;  view_hview[view_current]){
-            
+            global._active_phase = global._phase;
             global._phase = "return cards";
             for(i=0;i&lt;cards_played;i++){
                 hand[hand_size] = played[i];
@@ -172,6 +199,7 @@ if(global._phase == "FORMULATION" &amp;&amp; _play_formulation == false){
             <kind>1</kind>
             <string>draw_sprite_ext(sprite_skip,0,10,view_hview[view_current]-150,0.5,0.5,0,c_white,1);
 draw_sprite_ext(sprite_return_hand,0,view_wview[view_current]-150,view_hview[view_current]-150,0.5,0.5,0,c_white,1);
+draw_sprite_ext(sprite_play,0,view_wview[view_current]-400, view_hview[view_current]-150,0.5,0.5,0,c_white,1);
 draw_sprite_ext(sprite8_blue_player_mat, 0, view_xview[view_current]+view_wview[view_current]/2+50, 0, 0.5, 0.5, 0, c_white, 1);
 
 if(global._phase == "FORMULATION"){

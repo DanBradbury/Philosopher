@@ -64,7 +64,8 @@ drawn_card = "none";
 
 if(mouse_check_button(mb_left)&amp;&amp;_draw_selector&amp;&amp;global._phase=="DRAW"){
     add_process_to_hand(obj_player1);
-    global._phase = "PLAY";
+    obj_player1._play_formulation = true;
+    global._phase = "FORMULATION";
 }
 </string>
           </argument>

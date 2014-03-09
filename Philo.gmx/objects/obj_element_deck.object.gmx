@@ -132,11 +132,11 @@ for(i=0;i&lt;3;i++){
 if(mouse_check_button(mb_left)&amp;&amp;global._phase == "DRAW"){
     if(_draw_selector){
         add_element_to_hand(obj_player1);
-        global._phase = "PLAY";
+            global._phase = "FORMULATION";
     }else{
         if(selected!=-1){
             select_element_face_up(selected, obj_player1);
-            global._phase = "PLAY";
+            global._phase = "FORMULATION";                    
         }
     }
 }

@@ -46,6 +46,7 @@
       </sprites>
       <sprite>sprites\sprite25_tarotback</sprite>
     </sprites>
+    <sprite>sprites\sprite_return_hand</sprite>
     <sprite>sprites\sprite_skip</sprite>
   </sprites>
   <backgrounds name="background"/>

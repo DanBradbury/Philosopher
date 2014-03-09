@@ -3,7 +3,7 @@
   <name>CardDraw</name>
   <version>1.0</version>
   <author></author>
-  <date>3/6/2014</date>
+  <date>3/8/2014</date>
   <license>Free to use, also for commercial games.</license>
   <description></description>
   <helpfile></helpfile>
@@ -71,6 +71,18 @@
           <returnType>2</returnType>
           <argCount>1</argCount>
           <args>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>select_element_face_up</name>
+          <externalName>select_element_face_up</externalName>
+          <kind>2</kind>
+          <help>select_element_face_up</help>
+          <returnType>2</returnType>
+          <argCount>2</argCount>
+          <args>
+            <arg>2</arg>
             <arg>2</arg>
           </args>
         </function>

@@ -36,6 +36,17 @@
 
 #define select_element_face_up
 	_choice = argument[0];
+	_player = argument[1];
+	_deck = obj_element_deck;
+	
+	_player.hand[_player.hand_size] = _deck.face_up[_choice];
+	_player.hand_size += 1;
+	
+	
+	draw_element_card(obj_element_deck);
+	_deck.face_up[_choice] = _deck.drawn_card;
+	
+	return true;
 	
 	
 	

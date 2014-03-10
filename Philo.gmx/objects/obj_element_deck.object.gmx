@@ -67,6 +67,29 @@ selected = -1;
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string> global._phase = global._active_phase;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
@@ -129,16 +152,36 @@ for(i=0;i&lt;3;i++){
     }
 }
 
-if(mouse_check_button(mb_left)&amp;&amp;global._phase == "DRAW"){
+if(mouse_check_button(mb_left)&amp;&amp; global._phase == "DRAW"){
     if(_draw_selector){
         add_element_to_hand(obj_player1);
-            global._phase = "FORMULATION";
+            global._active_phase = "DRAW2";
+            global._phase = "IDLE";
+            alarm[1] = 10;
     }else{
         if(selected!=-1){
             select_element_face_up(selected, obj_player1);
-            global._phase = "FORMULATION";                    
+            global._active_phase = "DRAW2";
+            global._phase = "IDLE";
+            alarm[1] = 10;
         }
     }
+}else if(mouse_check_button(mb_left)&amp;&amp; global._phase == "DRAW2"){
+    if(_draw_selector){
+        add_element_to_hand(obj_player1);
+        obj_player1._play_formulation = true;
+        global._active_phase = "FORMULATION";
+        global._phase = "IDLE";
+        alarm[1] = 10;
+    }else{
+        if(selected!=-1){
+            select_element_face_up(selected, obj_player1);
+            obj_player1._play_formulation = true;
+            global._active_phase = "FORMULATION";
+            global._phase = "IDLE";
+            alarm[1] = 10;
+        }
+    }  
 }
 </string>
           </argument>
@@ -171,7 +214,7 @@ for(i=1;i&lt;=card_count;i++){
 
 // delete the lines below here to remove annoying text
 draw_set_color(c_red);
-if(global._phase == "DRAW"){
+if(global._phase == "DRAW" || global._phase == "DRAW2"){
     draw_set_color(c_green);
 }
 draw_set_font(font0);
@@ -206,34 +249,6 @@ if(_draw_selector==true){
 if(selected != -1){
     draw_rectangle(x+(selected*factor)+250-83,y+150-142.5,x+(selected*factor)+250+83, y+150+142.5, true);
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="32">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>init_element_face_up(self);
-for(i=0;i&lt;3;i++){
-    add_element_to_hand(obj_player1);
-}
-global._phase = "DRAW";
-
 </string>
           </argument>
         </arguments>

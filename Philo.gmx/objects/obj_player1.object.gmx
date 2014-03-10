@@ -148,8 +148,13 @@ if(mouse_check_button(mb_left)){
                 global._active_phase = "DISCARD";
                 global._phase = "IDLE";
                 alarm[1] = 10;
+            }else if(global._phase == "INIT"){
+                init_element_face_up(obj_element_deck);
+                for(i=0;i&lt;3;i++){
+                    add_element_to_hand(obj_player1);
+                }
+                global._phase = "DRAW";
             }
-        
     }
 }
 

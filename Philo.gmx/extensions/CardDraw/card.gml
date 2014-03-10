@@ -98,7 +98,7 @@
 	if(_deck.card_count > 0 )
 	{
 		if(_deck.philosopher > 0){
-			if(irandom_range(1,_deck.card_count)<=_deck.card_count){
+			if(irandom_range(1,_deck.card_count)>=_deck.card_count){
 				_deck.philosopher-=1;
 				card_count -= 1;
 				_deck.drawn_card = "PHILO";

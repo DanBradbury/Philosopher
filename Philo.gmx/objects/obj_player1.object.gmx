@@ -35,6 +35,7 @@ played[0] = "none";
 cards_played = 0;
 elements_played = 0;
 process_played = 0;
+philo_played = 0;
 
 </string>
           </argument>
@@ -140,10 +141,10 @@ if(mouse_check_button(mb_left)){
         mouse_y &gt; view_hview[view_current]-150 &amp;&amp;
         mouse_y &lt;  view_hview[view_current]){
             if(global._phase == "FORMULATION"){
-                global._active_phase = "TRANMUTAION";
+                global._active_phase = "TRANSMUTATION";
                 global._phase = "IDLE";
                 alarm[1] = 10;
-            }else if(global._phase == "TRANMUTAION"){
+            }else if(global._phase == "TRANSMUTATION"){
                 global._active_phase = "DISCARD";
                 global._phase = "IDLE";
                 alarm[1] = 10;
@@ -171,8 +172,43 @@ if(mouse_check_button(mb_left)){
     }
 }
 
+//check click play button
+if(mouse_check_button(mb_left)){
+    if(mouse_x &gt; view_wview[view_current]-400 &amp;&amp;
+        mouse_x &lt; view_wview[view_current]-250 &amp;&amp;
+        mouse_y &gt; view_hview[view_current]-150 &amp;&amp;
+        mouse_y &lt;  view_hview[view_current] &amp;&amp; global._valid_play){
+        //find out which spell was cast
+        play = "";
+        if(cards_played == 2 &amp;&amp; elements_played == 1 &amp;&amp; process_played == 1){
+            play = "FORM-ELEM";
+            active_card = played[1];
+        }else if(cards_played == 5 &amp;&amp; elements_played==4 &amp;&amp; process_played == 1){
+            play = "FORM-PROC";
+            active_card = played[0];
+        }else if(cards_played == 1 &amp;&amp; philo_played == 1){
+            play = "SPECIAL";
+        }
+            for(i=0;i&lt;cards_played;i++){
+                played[i] = "none";
+            }
+            cards_played = 0;
+            elements_played = 0;
+            process_played = 0;
+            
+            global._active_phase = "FORMULATION";
+            global._phase = "ACTION";
+            alarm[1] = 30; 
+    }
+}
+
 if(global._phase == "FORMULATION" &amp;&amp; _play_formulation == false){
     global._phase = "TRANSMUATION";
+}
+
+// restart level
+if(keyboard_check(vk_backspace)){
+    game_restart();
 }
 
 </string>
@@ -199,8 +235,9 @@ if(global._phase == "FORMULATION" &amp;&amp; _play_formulation == false){
             <kind>1</kind>
             <string>draw_sprite_ext(sprite_skip,0,10,view_hview[view_current]-150,0.5,0.5,0,c_white,1);
 draw_sprite_ext(sprite_return_hand,0,view_wview[view_current]-150,view_hview[view_current]-150,0.5,0.5,0,c_white,1);
-draw_sprite_ext(sprite_play,0,view_wview[view_current]-400, view_hview[view_current]-150,0.5,0.5,0,c_white,1);
+draw_sprite_ext(sprite_play,global._valid_play,view_wview[view_current]-400, view_hview[view_current]-150,0.5,0.5,0,c_white,1);
 draw_sprite_ext(sprite8_blue_player_mat, 0, view_xview[view_current]+view_wview[view_current]/2+50, 0, 0.5, 0.5, 0, c_white, 1);
+
 
 if(global._phase == "FORMULATION"){
     draw_set_color(c_green);
@@ -331,6 +368,54 @@ factor = selected*100; rotation = 0;
 
 
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// DRAW DISPLAY CARD
+if(global._phase == "ACTION"){
+    if(active_card =="ARSENIC"){
+                draw_sprite_ext(sprite7_ArsenicF,0,view_wview[view_current]/2,view_hview[view_current]/2,0.4, 0.4, 0, c_white, 1);
+            }else if(active_card =="SULFUR"){
+                draw_sprite_ext(sprite24_Sulfur,0,view_wview[view_current]/2,view_hview[view_current]/2,0.4, 0.4, 0, c_white, 1);    
+            }else if(active_card =="MAGNESIUM"){
+                draw_sprite_ext(sprite15_Magnesium,0,view_wview[view_current]/2,view_hview[view_current]/2,0.4, 0.4, 0, c_white, 1);    
+            }else if(active_card =="ZINC"){
+                draw_sprite_ext(sprite29_Zinc,0,view_wview[view_current]/2,view_hview[view_current]/2,0.4, 0.4, 0, c_white, 1);    
+            }else if(active_card =="AIR"){
+                draw_sprite_ext(sprite1_Air,0,view_wview[view_current]/2,view_hview[view_current]/2,0.4, 0.4, 0, c_white, 1);    
+            }else if(active_card =="EARTH"){
+                draw_sprite_ext(sprite10_earth,0,view_wview[view_current]/2,view_hview[view_current]/2,0.4, 0.4, 0, c_white, 1);    
+            }else if(active_card =="FIRE"){
+                draw_sprite_ext(sprite2_Alchemy_fire_final,0,view_wview[view_current]/2,view_hview[view_current]/2,0.4, 0.4, 0, c_white, 1);    
+            }else if(active_card =="WATER"){
+                draw_sprite_ext(sprite27_Water,0,view_wview[view_current]/2,view_hview[view_current]/2,0.4, 0.4, 0, c_white, 1);    
+            }else if(active_card =="PHILO"){
+                draw_sprite_ext(sprite19_PhilosophersStone,0,view_wview[view_current]/2,view_hview[view_current]/2,0.4, 0.4, 0, c_white, 1);    
+            }else if(active_card =="I"){
+                draw_sprite_ext(sprite12_Incineration,0,view_wview[view_current]/2,view_hview[view_current]/2,0.4, 0.4, 0, c_white, 1);    
+            }else if(active_card =="D"){
+                draw_sprite_ext(sprite9_Distillation,0,view_wview[view_current]/2,view_hview[view_current]/2,0.4, 0.4, 0, c_white, 1);    
+            }else if(active_card =="T"){
+                draw_sprite_ext(sprite26_transformation,0,view_wview[view_current]/2,view_hview[view_current]/2,0.4, 0.4, 0, c_white, 1);    
+            }
+}
 </string>
           </argument>
         </arguments>

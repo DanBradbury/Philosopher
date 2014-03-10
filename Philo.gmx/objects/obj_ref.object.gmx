@@ -28,6 +28,7 @@
             <string>init_game(2);
 
 global._phase = "INIT";
+global._valid_play = 0;
 </string>
           </argument>
         </arguments>
@@ -54,6 +55,15 @@ global._phase = "INIT";
     if(obj_player1._play_formulation==false){
         global._phase = "TRANSMUTATION";
     }
+    if(obj_player1.elements_played == 1 &amp;&amp; obj_player1.process_played == 1){
+        global._valid_play = 1;
+    }else if(obj_player1.elements_played == 4 &amp;&amp; obj_player1.process_played == 1){
+        global._valid_play = 1;
+    }else{
+        global._valid_play = 0;
+    }
+}else if(global._phase == "TRANSMUTATION"){
+    // TODO: ADD TRANSUMATION RULES
 }else if(global._phase == "return cards"){
     global._phase = global._active_phase;
 }else if(global._phase == "DISCARD"){

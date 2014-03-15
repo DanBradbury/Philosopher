@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-2000</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -79,7 +79,7 @@ drawn_card = "none";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(mouse_x &gt; x &amp;&amp; mouse_x &lt; x+165 &amp;&amp; mouse_y &gt; y+290 &amp;&amp; mouse_y &lt; y+282+290){
+            <string>if(mouse_x &gt; x+90 &amp;&amp; mouse_x &lt; x+90+82 &amp;&amp; mouse_y &gt; y &amp;&amp; mouse_y &lt; y+141){
     _draw_selector = true;
 }else{
     _draw_selector = false;
@@ -123,7 +123,7 @@ if(mouse_check_button(mb_left)&amp;&amp;_draw_selector&amp;&amp;global._phase=="
             <string>total_fanning = 1;
 
 for(i=1;i&lt;=card_count;i++){
-    draw_sprite_ext(sprite25_tarotback,0,x+total_fanning,y+290,0.1, 0.1, 0, c_white, 1);
+    draw_sprite_ext(sprite25_tarotback,0,x+total_fanning+90,y,0.05, 0.05, 0, c_white, 1);
 }
 
 draw_set_color(c_red);
@@ -131,11 +131,12 @@ if(global._phase == "DRAW" || global._phase == "DRAW2"){
     draw_set_color(c_green);
 }
 if(_draw_selector==true){
-    draw_rectangle( x, y-sprite_yoffset+290,x-sprite_xoffset+165, y-sprite_yoffset+282+290 ,true);
+    draw_rectangle( x+90, y-sprite_yoffset,x+90+82, y-sprite_yoffset+141 ,true);
 }
-
+draw_set_color(c_white);
 draw_set_font(font0);
-draw_text(x+total_fanning,y+290,drawn_card);
+draw_text(0,300,global._phase);
+
 </string>
           </argument>
         </arguments>

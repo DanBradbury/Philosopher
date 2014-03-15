@@ -4,7 +4,7 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions>
-    <extension index="16">extensions\CardDraw</extension>
+    <extension index="0">extensions\CardDraw</extension>
   </NewExtensions>
   <sounds name="sound"/>
   <sprites name="sprites">
@@ -61,6 +61,7 @@
     <object>objects\obj_element_deck</object>
     <object>objects\obj_ref</object>
     <object>objects\obj_player1</object>
+    <object>objects\card_zoom</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>

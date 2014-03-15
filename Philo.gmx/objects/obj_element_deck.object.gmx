@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-2000</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -133,7 +133,7 @@ selected = -1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(mouse_x &gt; x-sprite_xoffset &amp;&amp; mouse_x &lt; x-sprite_xoffset+165 &amp;&amp; mouse_y &gt; y-sprite_yoffset &amp;&amp; mouse_y &lt; y-sprite_yoffset+282){
+            <string>if(mouse_x &gt; x-sprite_xoffset &amp;&amp; mouse_x &lt; x-sprite_xoffset+82 &amp;&amp; mouse_y &gt; y-sprite_yoffset &amp;&amp; mouse_y &lt; y-sprite_yoffset+141){
     _draw_selector = true;
 }else{
     _draw_selector = false;
@@ -206,19 +206,19 @@ if(mouse_check_button(mb_left)&amp;&amp; global._phase == "DRAW"){
           <argument>
             <kind>1</kind>
             <string>total_fanning = 0;
-
-for(i=1;i&lt;=card_count;i++){
-    draw_sprite_ext(sprite25_tarotback,0,x+total_fanning,y,0.1, 0.1, 0, c_white, 1);
-    total_fanning += fan_d;
-}
-
 // delete the lines below here to remove annoying text
 draw_set_color(c_red);
 if(global._phase == "DRAW" || global._phase == "DRAW2"){
     draw_set_color(c_green);
 }
-draw_set_font(font0);
-draw_text(100,100,drawn_card);
+
+
+for(i=1;i&lt;=card_count;i++){
+    draw_sprite_ext(sprite25_tarotback,0,x+total_fanning,y,0.05, 0.05, 0, c_white, 1);
+    total_fanning += fan_d;
+}
+
+
 factor=170;
 for(i=0;i&lt;3;i++){   
     if(face_up[i] =="ARSENIC"){
@@ -243,7 +243,7 @@ for(i=0;i&lt;3;i++){
 }
 
 if(_draw_selector==true){
-    draw_rectangle( x-sprite_xoffset, y-sprite_yoffset,x-sprite_xoffset+165, y-sprite_yoffset+282 ,true);
+    draw_rectangle( x-sprite_xoffset, y-sprite_yoffset,x-sprite_xoffset+82, y-sprite_yoffset+141 ,true);
 }
 
 if(selected != -1){

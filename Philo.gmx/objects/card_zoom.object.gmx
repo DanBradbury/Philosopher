@@ -84,29 +84,29 @@ draw_background(background0,0,0);
 shader_reset();
 
 if(selected_card =="ARSENIC"){
-	draw_sprite_ext(sprite7_ArsenicF,0,room_width/2,room_height/2,0.4, 0.4, 0, c_white, 1);
+draw_sprite_ext(sprite7_ArsenicF,0,room_width/2,room_height/2,0.4, 0.4, 0, c_white, 1);
 }else if(selected_card =="SULFUR"){
-	draw_sprite_ext(sprite24_Sulfur,0,room_width/2,room_height/2,0.4, 0.4, 0, c_white, 1);    
+draw_sprite_ext(sprite24_Sulfur,0,room_width/2,room_height/2,0.4, 0.4, 0, c_white, 1);    
 }else if(selected_card =="MAGNESIUM"){
-	draw_sprite_ext(sprite15_Magnesium,0,room_width/2,room_height/2,0.4, 0.4, 0, c_white, 1);    
+draw_sprite_ext(sprite15_Magnesium,0,room_width/2,room_height/2,0.4, 0.4, 0, c_white, 1);    
 }else if(selected_card =="ZINC"){
-	draw_sprite_ext(sprite29_Zinc,0,room_width/2,room_height/2,0.4, 0.4, 0, c_white, 1);    
+draw_sprite_ext(sprite29_Zinc,0,room_width/2,room_height/2,0.4, 0.4, 0, c_white, 1);    
 }else if(selected_card =="AIR"){
-	draw_sprite_ext(sprite1_Air,0,room_width/2,room_height/2,0.4, 0.4, 0, c_white, 1);    
+draw_sprite_ext(sprite1_Air,0,room_width/2,room_height/2,0.4, 0.4, 0, c_white, 1);    
 }else if(selected_card =="EARTH"){
-	draw_sprite_ext(sprite10_earth,0,room_width/2,room_height/2,0.4, 0.4, 0, c_white, 1);    
+draw_sprite_ext(sprite10_earth,0,room_width/2,room_height/2,0.4, 0.4, 0, c_white, 1);    
 }else if(selected_card =="FIRE"){
-	draw_sprite_ext(sprite2_Alchemy_fire_final,0,room_width/2,room_height/2,0.4, 0.4, 0, c_white, 1);    
+draw_sprite_ext(sprite2_Alchemy_fire_final,0,room_width/2,room_height/2,0.4, 0.4, 0, c_white, 1);    
 }else if(selected_card =="WATER"){
-	draw_sprite_ext(sprite27_Water,0,room_width/2,room_height/2,0.4, 0.4, 0, c_white, 1);    
+draw_sprite_ext(sprite27_Water,0,room_width/2,room_height/2,0.4, 0.4, 0, c_white, 1);    
 }else if(selected_card =="PHILO"){
-	draw_sprite_ext(sprite19_PhilosophersStone,0,room_width/2,room_height/2,0.4, 0.4, 0, c_white, 1);    
+draw_sprite_ext(sprite19_PhilosophersStone,0,room_width/2,room_height/2,0.4, 0.4, 0, c_white, 1);    
 }else if(selected_card =="I"){
-	draw_sprite_ext(sprite12_Incineration,0,room_width/2,room_height/2,0.4, 0.4, 0, c_white, 1);    
+draw_sprite_ext(sprite12_Incineration,0,room_width/2,room_height/2,0.4, 0.4, 0, c_white, 1);    
 }else if(selected_card =="D"){
-	draw_sprite_ext(sprite9_Distillation,0,room_width/2,room_height/2,0.4, 0.4, 0, c_white, 1);    
+draw_sprite_ext(sprite9_Distillation,0,room_width/2,room_height/2,0.4, 0.4, 0, c_white, 1);    
 }else if(selected_card =="T"){
-	draw_sprite_ext(sprite26_transformation,0,room_width/2,room_height/2,0.4, 0.4, 0, c_white, 1);    
+draw_sprite_ext(sprite26_transformation,0,room_width/2,room_height/2,0.4, 0.4, 0, c_white, 1);    
 }
 </string>
           </argument>

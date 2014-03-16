@@ -29,6 +29,53 @@
 
 global._phase = "INIT";
 global._valid_play = 0;
+
+trans_phases[0] = "LEAD";
+trans_phases[1] = "QUICKSILVER";
+trans_phases[2] = "TIN";
+trans_phases[3] = "BRONZE";
+trans_phases[4] = "COPPER";
+trans_phases[5] = "SILVER";
+trans_phases[6] = "GOLD";
+trans_phases[7] = "WINNER";
+
+trans_sequence[0,0] = 3;
+trans_sequence[0,1] = "I";
+trans_sequence[0,2] = "MAGNESIUM";
+trans_sequence[0,3] = "WATER";
+
+trans_sequence[1,0] = 3;
+trans_sequence[1,1] = "T";
+trans_sequence[1,2] = "ZINC";
+trans_sequence[1,3] = "EARTH";
+
+trans_sequence[2,0] = 4;
+trans_sequence[2,1] = "D";
+trans_sequence[2,2] = "ARSENIC";
+trans_sequence[2,3] = "SULFUR";
+trans_sequence[2,4] = "AIR";
+
+trans_sequence[3,0] = 4;
+trans_sequence[3,1] = "I";
+trans_sequence[3,2] = "ZINC";
+trans_sequence[3,3] = "WATER";
+trans_sequence[3,4] = "FIRE";
+
+trans_sequence[4,0] = 5;
+trans_sequence[4,1] = "T";
+trans_sequence[4,2] = "MAGNESIUM";
+trans_sequence[4,3] = "ARSENIC";
+trans_sequence[4,4] = "AIR";
+trans_sequence[4,5] = "EARTH";
+
+trans_sequence[5,0] = 6;
+trans_sequence[5,1] = "D";
+trans_sequence[5,2] = "FIRE";
+trans_sequence[5,3] = "WATER";
+trans_sequence[5,4] = "AIR";
+trans_sequence[5,5] = "EARTH";
+trans_sequence[5,6] = "PHILO";
+
 </string>
           </argument>
         </arguments>
@@ -64,6 +111,25 @@ global._valid_play = 0;
     }
 }else if(global._phase == "TRANSMUTATION"){
     // TODO: ADD TRANSUMATION RULES
+    cur = global.p1_transLevel;
+    size = trans_sequence[cur,0];
+    
+    valid = false;
+    if(obj_player1.cards_played == size){
+        valid = true;
+        for(i=0;i&lt;size;i++){
+            if(obj_player1.played[i] != trans_sequence[cur,(i+1)]){
+                valid = false;
+            }
+        }
+    }
+    
+    if(valid == true){
+        global._valid_play = 1;
+    }else{
+        global._valid_play = 0;
+    }
+
 }else if(global._phase == "return cards"){
     global._phase = global._active_phase;
 }else if(global._phase == "DISCARD"){
@@ -95,7 +161,42 @@ global._valid_play = 0;
           <argument>
             <kind>1</kind>
             <string>/// draw indicator process card
-draw_sprite_ext(sprite12_Incineration, 0, 900, 300, 0.3, 0.3, 0, c_white, 0.5);
+size = trans_sequence[global.p1_transLevel,0];
+cur = global.p1_transLevel;
+
+for(i=1;i&lt;=size;i++){
+    factor = (i-1)*100;
+    yfactor = 0;
+         if(trans_sequence[cur,i] =="ARSENIC"){
+                draw_sprite_ext(sprite7_ArsenicF,0,900+factor,300+yfactor,0.3, 0.3, 0, c_white, 0.5);
+            }else if(trans_sequence[cur,i] =="SULFUR"){
+                draw_sprite_ext(sprite24_Sulfur,0,900+factor,300+yfactor,0.3, 0.3, 0, c_white, 0.5);    
+            }else if(trans_sequence[cur,i] =="MAGNESIUM"){
+                draw_sprite_ext(sprite15_Magnesium,0,900+factor,300+yfactor,0.3, 0.3, 0, c_white, 0.5);    
+            }else if(trans_sequence[cur,i] =="ZINC"){
+                draw_sprite_ext(sprite29_Zinc,0,900+factor,300+yfactor,0.3, 0.3, 0, c_white, 0.5);    
+            }else if(trans_sequence[cur,i] =="AIR"){
+                draw_sprite_ext(sprite1_Air,0,900+factor,300+yfactor,0.3, 0.3, 0, c_white, 0.5);    
+            }else if(trans_sequence[cur,i] =="EARTH"){
+                draw_sprite_ext(sprite10_earth,0,900+factor,300+yfactor,0.3, 0.3, 0, c_white, 0.5);    
+            }else if(trans_sequence[cur,i] =="FIRE"){
+                draw_sprite_ext(sprite2_Alchemy_fire_final,0,900+factor,300+yfactor,0.3, 0.3, 0, c_white, 0.5);    
+            }else if(trans_sequence[cur,i] =="WATER"){
+                draw_sprite_ext(sprite27_Water,0,900+factor,300+yfactor,0.3, 0.3, 0, c_white, 0.5);    
+            }else if(trans_sequence[cur,i] =="PHILO"){
+                draw_sprite_ext(sprite19_PhilosophersStone,0,900+factor,300+yfactor,0.3, 0.3, 0, c_white, 0.5);    
+            }else if(trans_sequence[cur,i] =="I"){
+                draw_sprite_ext(sprite12_Incineration,0,900+factor,300+yfactor,0.3, 0.3, 0, c_white, 0.5);    
+            }else if(trans_sequence[cur,i] =="D"){
+                draw_sprite_ext(sprite9_Distillation,0,900+factor,300+yfactor,0.3, 0.3, 0, c_white, 0.5);    
+            }else if(trans_sequence[cur,i] =="T"){
+                draw_sprite_ext(sprite26_transformation,0,900+factor,300+yfactor,0.3, 0.3, 0, c_white, 0.5);    
+            }
+}
+
+draw_set_font(transFont);
+draw_set_color(c_white);
+draw_text(room_width/2+200,0,trans_phases[cur]+"-&gt; "+trans_phases[cur+1] );
 </string>
           </argument>
         </arguments>

@@ -60,6 +60,7 @@
   </shaders>
   <fonts name="fonts">
     <font>fonts\font0</font>
+    <font>fonts\transFont</font>
   </fonts>
   <objects name="objects">
     <object>objects\size_guage</object>

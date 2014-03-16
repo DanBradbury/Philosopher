@@ -95,7 +95,7 @@ global._valid_play = 0;
           <argument>
             <kind>1</kind>
             <string>/// draw indicator process card
-draw_sprite_ext(sprite12_Incineration, 0, 230, 200, 0.43, 0.25, 0, c_white, 0.5);
+draw_sprite_ext(sprite12_Incineration, 0, 900, 300, 0.3, 0.3, 0, c_white, 0.5);
 </string>
           </argument>
         </arguments>

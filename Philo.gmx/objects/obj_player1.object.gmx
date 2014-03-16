@@ -133,6 +133,10 @@ if(selected != -1 &amp;&amp; mouse_check_button(mb_left) &amp;&amp; global._phas
     global._phase = "IDLE";
     alarm[0] = 10;
 }
+if(selected != -1 &amp;&amp; mouse_check_button(mb_right)){
+    c = instance_create(x,y,card_zoom);
+    c.selected_card = hand[selected];
+}
 
 // check skip phase
 if(mouse_check_button(mb_left)){

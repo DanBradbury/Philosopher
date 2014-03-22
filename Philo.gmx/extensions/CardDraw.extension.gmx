@@ -3,7 +3,7 @@
   <name>CardDraw</name>
   <version>1.0</version>
   <author></author>
-  <date>3/8/2014</date>
+  <date>3/22/2014</date>
   <license>Free to use, also for commercial games.</license>
   <description></description>
   <helpfile></helpfile>
@@ -55,10 +55,10 @@
           </args>
         </function>
         <function>
-          <name>init_element_face_up</name>
-          <externalName>init_element_face_up</externalName>
+          <name>init_element_deck</name>
+          <externalName>init_element_deck</externalName>
           <kind>2</kind>
-          <help>init_element_face_up(deck)</help>
+          <help>init_element_deck(deck)</help>
           <returnType>2</returnType>
           <argCount>-1</argCount>
           <args/>
@@ -86,13 +86,14 @@
           </args>
         </function>
         <function>
-          <name>select_element_face_up</name>
-          <externalName>select_element_face_up</externalName>
+          <name>select_face_up</name>
+          <externalName>select_face_up</externalName>
           <kind>2</kind>
-          <help>select_element_face_up</help>
+          <help>select_face_up</help>
           <returnType>2</returnType>
-          <argCount>2</argCount>
+          <argCount>3</argCount>
           <args>
+            <arg>2</arg>
             <arg>2</arg>
             <arg>2</arg>
           </args>
@@ -113,6 +114,17 @@
           <externalName>add_process_to_hand</externalName>
           <kind>2</kind>
           <help>add_process_to_hand</help>
+          <returnType>2</returnType>
+          <argCount>1</argCount>
+          <args>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>draw_card</name>
+          <externalName>draw_card</externalName>
+          <kind>2</kind>
+          <help>draw_card(deck)</help>
           <returnType>2</returnType>
           <argCount>1</argCount>
           <args>

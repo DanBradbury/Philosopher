@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-5000</depth>
+  <depth>-100</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -118,7 +118,7 @@ trans_sequence[5,6] = "PHILO";
     if(obj_player1.cards_played == size){
         valid = true;
         for(i=0;i&lt;size;i++){
-            if(obj_player1.played[i] != trans_sequence[cur,(i+1)]){
+            if(ds_list_find_value(obj_player1.played, i) != trans_sequence[cur,(i+1)]){
                 valid = false;
             }
         }
@@ -134,7 +134,9 @@ trans_sequence[5,6] = "PHILO";
     global._phase = global._active_phase;
 }else if(global._phase == "DISCARD"){
     // perform discard check
-    global._phase = "DRAW";
+    if(obj_player1.hand_size &lt;= 7){
+        global._phase = "DRAW";
+    }
 }
 
 
@@ -164,33 +166,39 @@ trans_sequence[5,6] = "PHILO";
 size = trans_sequence[global.p1_transLevel,0];
 cur = global.p1_transLevel;
 
+
 for(i=1;i&lt;=size;i++){
-    factor = (i-1)*100;
-    yfactor = 0;
+    j = i % 3;
+    factor = j*186;
+    if(i&lt;=2){
+        yfactor = 0;
+    }else{
+        yfactor = 290;
+    }
          if(trans_sequence[cur,i] =="ARSENIC"){
-                draw_sprite_ext(sprite7_ArsenicF,0,900+factor,300+yfactor,0.3, 0.3, 0, c_white, 0.5);
+                draw_sprite_ext(sprite7_ArsenicF,0,view_xview[view_current]+800+factor,y+50+yfactor,0.1, 0.1, 0, c_white, 0.5);
             }else if(trans_sequence[cur,i] =="SULFUR"){
-                draw_sprite_ext(sprite24_Sulfur,0,900+factor,300+yfactor,0.3, 0.3, 0, c_white, 0.5);    
+                draw_sprite_ext(sprite24_Sulfur,0,view_xview[view_current]+800+factor,y+50+yfactor,0.1, 0.1, 0, c_white, 0.5);    
             }else if(trans_sequence[cur,i] =="MAGNESIUM"){
-                draw_sprite_ext(sprite15_Magnesium,0,900+factor,300+yfactor,0.3, 0.3, 0, c_white, 0.5);    
+                draw_sprite_ext(sprite15_Magnesium,0,view_xview[view_current]+800+factor,y+50+yfactor,0.1, 0.1, 0, c_white, 0.5);    
             }else if(trans_sequence[cur,i] =="ZINC"){
-                draw_sprite_ext(sprite29_Zinc,0,900+factor,300+yfactor,0.3, 0.3, 0, c_white, 0.5);    
+                draw_sprite_ext(sprite29_Zinc,0,view_xview[view_current]+800+factor,y+50+yfactor,0.1, 0.1, 0, c_white, 0.5);    
             }else if(trans_sequence[cur,i] =="AIR"){
-                draw_sprite_ext(sprite1_Air,0,900+factor,300+yfactor,0.3, 0.3, 0, c_white, 0.5);    
+                draw_sprite_ext(sprite1_Air,0,view_xview[view_current]+800+factor,y+50+yfactor,0.1, 0.1, 0, c_white, 0.5);    
             }else if(trans_sequence[cur,i] =="EARTH"){
-                draw_sprite_ext(sprite10_earth,0,900+factor,300+yfactor,0.3, 0.3, 0, c_white, 0.5);    
+                draw_sprite_ext(sprite10_earth,0,view_xview[view_current]+800+factor,y+50+yfactor,0.1, 0.1, 0, c_white, 0.5);    
             }else if(trans_sequence[cur,i] =="FIRE"){
-                draw_sprite_ext(sprite2_Alchemy_fire_final,0,900+factor,300+yfactor,0.3, 0.3, 0, c_white, 0.5);    
+                draw_sprite_ext(sprite2_Alchemy_fire_final,0,view_xview[view_current]+800+factor,y+50+yfactor,0.1, 0.1, 0, c_white, 0.5);    
             }else if(trans_sequence[cur,i] =="WATER"){
-                draw_sprite_ext(sprite27_Water,0,900+factor,300+yfactor,0.3, 0.3, 0, c_white, 0.5);    
+                draw_sprite_ext(sprite27_Water,0,view_xview[view_current]+800+factor,y+50+yfactor,0.1, 0.1, 0, c_white, 0.5);    
             }else if(trans_sequence[cur,i] =="PHILO"){
-                draw_sprite_ext(sprite19_PhilosophersStone,0,900+factor,300+yfactor,0.3, 0.3, 0, c_white, 0.5);    
+                draw_sprite_ext(sprite19_PhilosophersStone,0,view_xview[view_current]+800+factor,y+50+yfactor,0.1, 0.1, 0, c_white, 0.5);    
             }else if(trans_sequence[cur,i] =="I"){
-                draw_sprite_ext(sprite12_Incineration,0,900+factor,300+yfactor,0.3, 0.3, 0, c_white, 0.5);    
+                draw_sprite_ext(sprite12_Incineration,0,view_xview[view_current]+800+factor,y+50+yfactor,0.1, 0.1, 0, c_white, 0.5);    
             }else if(trans_sequence[cur,i] =="D"){
-                draw_sprite_ext(sprite9_Distillation,0,900+factor,300+yfactor,0.3, 0.3, 0, c_white, 0.5);    
+                draw_sprite_ext(sprite9_Distillation,0,view_xview[view_current]+800+factor,y+50+yfactor,0.1, 0.1, 0, c_white, 0.5);    
             }else if(trans_sequence[cur,i] =="T"){
-                draw_sprite_ext(sprite26_transformation,0,900+factor,300+yfactor,0.3, 0.3, 0, c_white, 0.5);    
+                draw_sprite_ext(sprite26_transformation,0,view_xview[view_current]+800+factor,y+50+yfactor,0.1, 0.1, 0, c_white, 0.5);    
             }
 }
 

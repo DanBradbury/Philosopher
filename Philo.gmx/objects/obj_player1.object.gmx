@@ -565,7 +565,7 @@ draw_sprite_ext(sprite8_blue_player_mat, 0, view_hview[view_current]+170,500,0.2
           <argument>
             <kind>1</kind>
             <string>/// draw cards in play
-if(global._phase == "TRANSMUTATION"){
+if(global._phase == "TRANSMUTATION" || global._active_phase == "TRANSMUTATION"){
     if(cards_played &gt; 0){
         
         for(i=0;i&lt;=cards_played-process_played;i++){

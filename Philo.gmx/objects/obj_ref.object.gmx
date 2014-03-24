@@ -28,6 +28,7 @@
             <string>init_game(2);
 
 global._phase = "INIT";
+global._active_phase = "INIT";
 global._valid_play = 0;
 
 trans_phases[0] = "LEAD";

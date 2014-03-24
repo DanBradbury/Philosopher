@@ -24,7 +24,7 @@
 	
 	// initialize the face up cards
 	for(q=0;q<=2;q++){
-		draw_process_card(_deck);
+		draw_card(_deck);
 		_deck.face_up[q] = _deck.drawn_card;		
 	}
 	
@@ -60,7 +60,7 @@
 	
 	// Initialize the face up cards
 	for(l=0;l<=2;l++){
-		draw_element_card(_deck);
+		draw_card(_deck);
 		_deck.face_up[l] = _deck.drawn_card;
 	}
 	
@@ -71,7 +71,7 @@
 	_player = argument[1];
 	_deck = argument[2];
 	
-	ds_list_insert(_player.hand, _player.hand_size, _deck.face_up[_choice]);
+	ds_list_add(_player.hand,  _deck.face_up[_choice]);
 	_player.hand_size += 1;
 	
 	
@@ -90,7 +90,7 @@
 #define add_process_to_hand
 	_player = argument[0];
 	
-	draw_process_card(obj_process_deck);
+	draw_card(obj_process_deck);
 	ds_list_add(_player.hand, obj_process_deck.drawn_card);
 	_player.hand_size += 1;
 	
@@ -99,7 +99,7 @@
 #define add_element_to_hand
 	_player = argument[0];
 	
-	draw_element_card(obj_element_deck);
+	draw_card(obj_element_deck);
 	ds_list_add(_player.hand, obj_element_deck.drawn_card);
 	_player.hand_size += 1;
 	
@@ -108,32 +108,14 @@
 #define draw_card
 	_deck = argument[0];
 	i = "none";
-	while(i == "none"){
+	selected = false;
+	while(selected == false){
 		r = irandom_range(0,_deck.card_count-1);
 		i = _deck.deck[r];
-	}
-	_deck.drawn_card = i;
-	
-	return true;
-	
-#define draw_process_card
-	_deck = argument[0];
-	i = "none";
-	while(i == "none"){
-		r = irandom_range(0,_deck.card_count-1);
-		i = _deck.deck[r];
-	}
-	_deck.drawn_card = i;
-	
-	return true;
-	
-#define draw_element_card
-	_deck = argument[0]
-	
-	i = "none";
-	while(i == "none"){
-		r = irandom_range(0, _deck.card_count-1);
-		i = _deck.deck[r];
+		if(i != "none"){
+			selected = true;
+			_deck.deck[r] = "none";
+		}
 	}
 	_deck.drawn_card = i;
 	

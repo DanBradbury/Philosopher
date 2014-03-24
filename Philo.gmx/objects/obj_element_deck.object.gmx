@@ -163,6 +163,7 @@ if(mouse_check_button(mb_right)&amp;&amp; selected != -1){
 }
 
 if(mouse_check_button(mb_left)&amp;&amp; global._phase == "DRAW"){
+    card_count -= 1;
     if(_draw_selector){
             add_element_to_hand(obj_player1);
             global._active_phase = "DRAW2";
@@ -284,6 +285,9 @@ if(size &gt; 0 ){
         draw_sprite_ext(sprite19_PhilosophersStone,0,45,y+75,0.1, 0.1, 0, c_white, 1);    
     }
 }
+
+draw_set_font(font0);
+draw_text(x,y+25, string(drawn_card));
 </string>
           </argument>
         </arguments>

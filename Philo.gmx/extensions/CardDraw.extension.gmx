@@ -3,7 +3,7 @@
   <name>CardDraw</name>
   <version>1.0</version>
   <author></author>
-  <date>3/22/2014</date>
+  <date>3/23/2014</date>
   <license>Free to use, also for commercial games.</license>
   <description></description>
   <helpfile></helpfile>
@@ -37,17 +37,6 @@
           <externalName>init_game</externalName>
           <kind>2</kind>
           <help>init_game(num_players)</help>
-          <returnType>2</returnType>
-          <argCount>1</argCount>
-          <args>
-            <arg>2</arg>
-          </args>
-        </function>
-        <function>
-          <name>draw_element_card</name>
-          <externalName>draw_element_card</externalName>
-          <kind>2</kind>
-          <help>draw_element_card</help>
           <returnType>2</returnType>
           <argCount>1</argCount>
           <args>
@@ -95,17 +84,6 @@
           <args>
             <arg>2</arg>
             <arg>2</arg>
-            <arg>2</arg>
-          </args>
-        </function>
-        <function>
-          <name>draw_process_card</name>
-          <externalName>draw_process_card</externalName>
-          <kind>2</kind>
-          <help>draw_process_card</help>
-          <returnType>2</returnType>
-          <argCount>1</argCount>
-          <args>
             <arg>2</arg>
           </args>
         </function>

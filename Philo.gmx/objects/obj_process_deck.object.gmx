@@ -94,6 +94,7 @@ discard = ds_list_create();
 }
 
 if(mouse_check_button(mb_left) &amp;&amp; global._phase=="DRAW"){
+    card_count -= 1;
     if(_draw_selector){
         add_process_to_hand(obj_player1);
         obj_player1._play_formulation = true;

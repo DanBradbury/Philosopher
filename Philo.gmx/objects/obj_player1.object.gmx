@@ -31,6 +31,15 @@ hand = ds_list_create();
 selected = -1;
 _play_formulation = false;
 
+// may want to consider replacing with an array since this is a set in stone size
+played[0] = "none";
+played[1] = "none";
+played[2] = "none";
+played[3] = "none";
+played[4] = "none";
+played[5] = "none";
+
+/*
 played = ds_list_create();
 ds_list_add(played, "none");
 ds_list_add(played, "none");
@@ -39,6 +48,7 @@ ds_list_add(played, "none");
 ds_list_add(played, "none");
 ds_list_add(played, "none");
 ds_list_add(played, "none");
+*/
 
 cards_played = 0;
 elements_played = 0;
@@ -124,43 +134,7 @@ for(i=0;i&lt;hand_size;i++){
     }
 }
 
-// play card if we have a selection
-if(selected != -1 &amp;&amp; mouse_check_button(mb_left) &amp;&amp; (global._phase == "FORMULATION" || global._phase == "TRANSMUTATION") &amp;&amp; cards_played &lt; 6 ){
-    p = false; // flag to see if we have played a process card already
-    if( ds_list_find_value(hand, selected) == "D" ||
-        ds_list_find_value(hand, selected) == "I" ||
-        ds_list_find_value(hand, selected) == "T"){
-        if(process_played == 1){
-            p = true;
-        }else{
-            process_played = 1;
-            ds_list_replace(played, 0, ds_list_find_value(hand, selected));   
-        }
-    }else{
-        ds_list_replace(played, 1+elements_played, ds_list_find_value(hand, selected));
-        elements_played += 1;
-    }
-    
-    if(p == false){
-        ds_list_replace(hand, selected, "none"); // think this is the trouble line
-        for(i=selected;i&lt;hand_size-1;i++){
-           ds_list_replace(hand, i, ds_list_find_value(hand, i+1));
-        }
-        hand_size -= 1;
-       
-        global._active_phase = global._phase;
-        global._phase = "IDLE";
-        alarm[1] = 10;
-        cards_played += 1;
-    }
-}else if(selected != -1 &amp;&amp; mouse_check_button(mb_left) &amp;&amp; global._phase == "DISCARD"){
-    hand_size -= 1;
-    ds_list_delete(hand, selected);
-    selected = -1;
-    global._active_phase = global._phase;
-    global._phase = "IDLE";
-    alarm[1] = 10;
-}
+
 if(selected != -1 &amp;&amp; mouse_check_button(mb_right)){
     c = instance_create(x,y,card_zoom);
     c.selected_card = ds_list_find_value(hand, selected);
@@ -190,33 +164,6 @@ if(mouse_check_button(mb_left)){
     }
 }
 
-//check return hand
-if(mouse_check_button(mb_left)){
-    if(mouse_x &gt; 10+80 &amp;&amp;
-        mouse_x &lt; 10+80+75 &amp;&amp;
-        mouse_y &gt; view_hview[view_current]-300 &amp;&amp;
-        mouse_y &lt;  view_hview[view_current]-300+75){
-            global._active_phase = global._phase;
-            global._phase = "return cards";
-            for(i=0;i&lt;cards_played;i++){
-                if(process_played == 0){
-                    ds_list_replace(hand, hand_size, ds_list_find_value(played, i+1));
-                }else{
-                    ds_list_replace(hand, hand_size, ds_list_find_value(played, i));
-                }
-                //ds_list_add(hand, ds_list_find_value(played, i));
-                hand_size += 1;
-                if(process_played == 0){
-                    ds_list_replace(played, i+1, "none");
-                }else{               
-                    ds_list_replace(played, i, "none");
-                }
-            }
-            cards_played = 0;
-            elements_played = 0;
-            process_played = 0;
-    }
-}
 
 //check click play button
 if(mouse_check_button(mb_left)){
@@ -240,13 +187,14 @@ if(mouse_check_button(mb_left)){
             active_card = "TRANSMUTATE";
         }
             for(i=0;i&lt;cards_played;i++){
-                t = ds_list_find_value(played, 0);
+                t = played[i];
                 if(t=="I" || t=="T" || t=="D"){
                     ds_list_add(obj_process_deck.discard, t);
                 }else{
                     ds_list_add(obj_element_deck.discard, t);
                 }
-                ds_list_delete(played, i);
+                //ds_list_delete(played, i);               
+                played[i] = "none";
             }
             cards_played = 0;
             elements_played = 0;
@@ -268,6 +216,122 @@ if(keyboard_check(vk_backspace)){
     game_restart();
 }
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// play card if we have a selection
+if(selected != -1 &amp;&amp; mouse_check_button(mb_left) &amp;&amp; (global._phase == "FORMULATION" || global._phase == "TRANSMUTATION") &amp;&amp; cards_played &lt; 6 ){
+    p = false; // flag to see if we have played a process card already
+    
+    //if we are looking at a process card
+    if( ds_list_find_value(hand, selected) == "D" ||
+        ds_list_find_value(hand, selected) == "I" ||
+        ds_list_find_value(hand, selected) == "T"){
+        if(process_played == 1){
+            p = true;
+        }else{
+            process_played = 1;
+            //ds_list_replace(played, 0, ds_list_find_value(hand, selected));
+            played[0] = ds_list_find_value(hand, selected);  
+        }
+    }else{
+        //ds_list_replace(played, 1+elements_played, ds_list_find_value(hand, selected));
+        played[1+elements_played] = ds_list_find_value(hand, selected);
+        elements_played += 1;
+    }
+    
+    // if we have yet to play a process card / every elemnet card being played
+    if(p == false){
+        //ds_list_replace(hand, selected, "none");
+        //for(i=selected;i&lt;hand_size-1;i++){
+        //   ds_list_replace(hand, i, ds_list_find_value(hand, i+1));
+        //}
+        ds_list_delete(hand, selected);
+        hand_size -= 1;
+       
+        global._active_phase = global._phase;
+        global._phase = "IDLE";
+        alarm[1] = 10;
+        cards_played += 1;
+        selected = -1; // quick fix attempt
+    }
+}else if(selected != -1 &amp;&amp; mouse_check_button(mb_left) &amp;&amp; global._phase == "DISCARD"){
+    hand_size -= 1;
+    ds_list_delete(hand, selected);
+    //TODO: put the discarded into the discard pile
+    selected = -1;
+    global._active_phase = global._phase;
+    global._phase = "IDLE";
+    alarm[1] = 10;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///check return hand
+if(mouse_check_button(mb_left)){
+    if(mouse_x &gt; 10+80 &amp;&amp;
+        mouse_x &lt; 10+80+75 &amp;&amp;
+        mouse_y &gt; view_hview[view_current]-300 &amp;&amp;
+        mouse_y &lt;  view_hview[view_current]-300+75){
+            global._active_phase = global._phase;
+            global._phase = "return cards";
+            for(i=0;i&lt;cards_played;i++){
+                //if(process_played == 0){
+                //    ds_list_replace(hand, hand_size, played[i+1]);
+                //}else{
+                //    ds_list_replace(hand, hand_size, played[i]);
+                //}
+                //ds_list_add(hand, played[i]);
+                hand_size += 1;
+                if(process_played == 0){
+                    //ds_list_replace(played, i+1, "none");
+                    ds_list_add(hand, played[i+1]);
+                    played[i+1] = "none";
+                }else{               
+                    //ds_list_replace(played, i, "none");
+                    ds_list_add(hand, played[i]);
+                    played[i] = "none";
+                }
+            }
+            cards_played = 0;
+            elements_played = 0;
+            process_played = 0;
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -310,29 +374,29 @@ if(cards_played &gt; 0){
         }else{
             yfactor = 290;
         }
-            if(ds_list_find_value(played, i) =="ARSENIC"){
+            if(played[i] =="ARSENIC"){
                 draw_sprite_ext(sprite7_ArsenicF,0,view_xview[view_current]+800+factor,y-45+yfactor,0.1, 0.1, 0, c_white, 1);
-            }else if(ds_list_find_value(played, i) =="SULFUR"){
+            }else if(played[i] =="SULFUR"){
                 draw_sprite_ext(sprite24_Sulfur,0,view_xview[view_current]+800+factor,y-45+yfactor,0.1, 0.1, 0, c_white, 1);    
-            }else if(ds_list_find_value(played, i) =="MAGNESIUM"){
+            }else if(played[i] =="MAGNESIUM"){
                 draw_sprite_ext(sprite15_Magnesium,0,view_xview[view_current]+800+factor,y-45+yfactor,0.1, 0.1, 0, c_white, 1);    
-            }else if(ds_list_find_value(played, i) =="ZINC"){
+            }else if(played[i] =="ZINC"){
                 draw_sprite_ext(sprite29_Zinc,0,view_xview[view_current]+800+factor,y-45+yfactor,0.1, 0.1, 0, c_white, 1);    
-            }else if(ds_list_find_value(played, i) =="AIR"){
+            }else if(played[i] =="AIR"){
                 draw_sprite_ext(sprite1_Air,0,view_xview[view_current]+800+factor,y-45+yfactor,0.1, 0.1, 0, c_white, 1);    
-            }else if(ds_list_find_value(played, i) =="EARTH"){
+            }else if(played[i] =="EARTH"){
                 draw_sprite_ext(sprite10_earth,0,view_xview[view_current]+800+factor,y-45+yfactor,0.1, 0.1, 0, c_white, 1);    
-            }else if(ds_list_find_value(played, i) =="FIRE"){
+            }else if(played[i] =="FIRE"){
                 draw_sprite_ext(sprite2_Alchemy_fire_final,0,view_xview[view_current]+800+factor,y-45+yfactor,0.1, 0.1, 0, c_white, 1);    
-            }else if(ds_list_find_value(played, i) =="WATER"){
+            }else if(played[i] =="WATER"){
                 draw_sprite_ext(sprite27_Water,0,view_xview[view_current]+800+factor,y-45+yfactor,0.1, 0.1, 0, c_white, 1);    
-            }else if(ds_list_find_value(played, i) =="PHILO"){
+            }else if(played[i] =="PHILO"){
                 draw_sprite_ext(sprite19_PhilosophersStone,0,view_xview[view_current]+800+factor,y-45+yfactor,0.1, 0.1, 0, c_white, 1);    
-            }else if(ds_list_find_value(played, i) =="I"){
+            }else if(played[i] =="I"){
                 draw_sprite_ext(sprite12_Incineration,0,view_xview[view_current]+800+factor,y-45+yfactor,0.1, 0.1, 0, c_white, 1);    
-            }else if(ds_list_find_value(played, i) =="D"){
+            }else if(played[i] =="D"){
                 draw_sprite_ext(sprite9_Distillation,0,view_xview[view_current]+800+factor,y-45+yfactor,0.1, 0.1, 0, c_white, 1);    
-            }else if(ds_list_find_value(played, i) =="T"){
+            }else if(played[i] =="T"){
                 draw_sprite_ext(sprite26_transformation,0,view_xview[view_current]+800+factor,y-45+yfactor,0.1, 0.1, 0, c_white, 1);    
             }
     }
@@ -341,53 +405,53 @@ if(cards_played &gt; 0){
 rotation = -10;
 draw_set_font(font0);
 
-for(i=0;i&lt;hand_size;i++){
+for(q=0;q&lt;hand_size;q++){
 // determine the factor of adjutment
-    if(i==0){
+    if(q==0){
         factor = 0;
         //rotation = 15;
         rotation = 0;
     }else{
-        if( i==1 ){
+        if( q==1 ){
             //rotation = 10;
             rotation = 0;
-        }else if (i==2){
+        }else if (q==2){
             rotation = 0;
         }else{
             //rotation = -5;
             rotation = 0;
         }        
-        factor = 100*i;
+        factor = 100*q;
     }
     
         
-    if(ds_list_find_value(hand, i) =="ARSENIC"){
+    if(ds_list_find_value(hand, q) =="ARSENIC"){
         draw_sprite_ext(sprite7_ArsenicF,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);
-    }else if(ds_list_find_value(hand, i) =="SULFUR"){
+    }else if(ds_list_find_value(hand, q) =="SULFUR"){
         draw_sprite_ext(sprite24_Sulfur,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
-    }else if(ds_list_find_value(hand, i) =="MAGNESIUM"){
+    }else if(ds_list_find_value(hand, q) =="MAGNESIUM"){
         draw_sprite_ext(sprite15_Magnesium,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
-    }else if(ds_list_find_value(hand, i) =="ZINC"){
+    }else if(ds_list_find_value(hand, q) =="ZINC"){
         draw_sprite_ext(sprite29_Zinc,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
-    }else if(ds_list_find_value(hand, i) =="AIR"){
+    }else if(ds_list_find_value(hand, q) =="AIR"){
         draw_sprite_ext(sprite1_Air,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
-    }else if(ds_list_find_value(hand, i) =="EARTH"){
+    }else if(ds_list_find_value(hand, q) =="EARTH"){
         draw_sprite_ext(sprite10_earth,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
-    }else if(ds_list_find_value(hand, i) =="FIRE"){
+    }else if(ds_list_find_value(hand, q) =="FIRE"){
         draw_sprite_ext(sprite2_Alchemy_fire_final,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
-    }else if(ds_list_find_value(hand, i) =="WATER"){
+    }else if(ds_list_find_value(hand, q) =="WATER"){
         draw_sprite_ext(sprite27_Water,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
-    }else if(ds_list_find_value(hand, i) =="PHILO"){
+    }else if(ds_list_find_value(hand, q) =="PHILO"){
         draw_sprite_ext(sprite19_PhilosophersStone,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
-    }else if(ds_list_find_value(hand, i) == "T"){
+    }else if(ds_list_find_value(hand, q) == "T"){
         draw_sprite_ext(sprite26_transformation,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
-    }else if(ds_list_find_value(hand, i) == "D"){
+    }else if(ds_list_find_value(hand, q) == "D"){
         draw_sprite_ext(sprite9_Distillation,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);        
-    }else if(ds_list_find_value(hand, i) == "I"){
+    }else if(ds_list_find_value(hand, q) == "I"){
         draw_sprite_ext(sprite12_Incineration,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);        
     }
     draw_set_color(c_white);
-    draw_text( view_xview[view_current]+view_wview[view_current]/2+factor-350,y+150, string(ds_list_find_value(hand,i)) );    
+    draw_text( view_xview[view_current]+view_wview[view_current]/2+factor-350,y+150, string(ds_list_find_value(hand,q)) );    
 }
 
 if(global._phase == "FORMULATION" || global._phase == "DISCARD" || global._phase == "TRANSMUTATION"){
@@ -426,7 +490,6 @@ factor = selected*100; rotation = 0;
         draw_sprite_ext(sprite12_Incineration,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);        
     }    
     draw_rectangle(view_xview[view_current]+view_wview[view_current]/2-300-124+factor,y+400-214, view_xview[view_current]+view_wview[view_current]/2-300+124+factor,y+400+ 428-214,true);
-
 }
 
 

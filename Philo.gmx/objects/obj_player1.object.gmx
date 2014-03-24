@@ -372,44 +372,6 @@ if(global._phase == "FORMULATION" || global._phase == "DISCARD" || global._phase
     draw_set_color(c_red);
 }
 
-// draw cards in play
-if(cards_played &gt; 0){
-    
-    for(i=0;i&lt;=cards_played-process_played;i++){
-        j = i % 3;
-        factor = 186 *j;
-        if(i&lt;=2){
-            yfactor = 0;
-        }else{
-            yfactor = 290;
-        }
-            if(played[i] =="ARSENIC"){
-                draw_sprite_ext(sprite7_ArsenicF,0,view_xview[view_current]+800+factor,y-45+yfactor,0.1, 0.1, 0, c_white, 1);
-            }else if(played[i] =="SULFUR"){
-                draw_sprite_ext(sprite24_Sulfur,0,view_xview[view_current]+800+factor,y-45+yfactor,0.1, 0.1, 0, c_white, 1);    
-            }else if(played[i] =="MAGNESIUM"){
-                draw_sprite_ext(sprite15_Magnesium,0,view_xview[view_current]+800+factor,y-45+yfactor,0.1, 0.1, 0, c_white, 1);    
-            }else if(played[i] =="ZINC"){
-                draw_sprite_ext(sprite29_Zinc,0,view_xview[view_current]+800+factor,y-45+yfactor,0.1, 0.1, 0, c_white, 1);    
-            }else if(played[i] =="AIR"){
-                draw_sprite_ext(sprite1_Air,0,view_xview[view_current]+800+factor,y-45+yfactor,0.1, 0.1, 0, c_white, 1);    
-            }else if(played[i] =="EARTH"){
-                draw_sprite_ext(sprite10_earth,0,view_xview[view_current]+800+factor,y-45+yfactor,0.1, 0.1, 0, c_white, 1);    
-            }else if(played[i] =="FIRE"){
-                draw_sprite_ext(sprite2_Alchemy_fire_final,0,view_xview[view_current]+800+factor,y-45+yfactor,0.1, 0.1, 0, c_white, 1);    
-            }else if(played[i] =="WATER"){
-                draw_sprite_ext(sprite27_Water,0,view_xview[view_current]+800+factor,y-45+yfactor,0.1, 0.1, 0, c_white, 1);    
-            }else if(played[i] =="PHILO"){
-                draw_sprite_ext(sprite19_PhilosophersStone,0,view_xview[view_current]+800+factor,y-45+yfactor,0.1, 0.1, 0, c_white, 1);    
-            }else if(played[i] =="I"){
-                draw_sprite_ext(sprite12_Incineration,0,view_xview[view_current]+800+factor,y-45+yfactor,0.1, 0.1, 0, c_white, 1);    
-            }else if(played[i] =="D"){
-                draw_sprite_ext(sprite9_Distillation,0,view_xview[view_current]+800+factor,y-45+yfactor,0.1, 0.1, 0, c_white, 1);    
-            }else if(played[i] =="T"){
-                draw_sprite_ext(sprite26_transformation,0,view_xview[view_current]+800+factor,y-45+yfactor,0.1, 0.1, 0, c_white, 1);    
-            }
-    }
-}
 
 rotation = -10;
 draw_set_font(font0);
@@ -582,6 +544,64 @@ draw_sprite_ext(sprite_return_hand,0,10+80,view_hview[view_current]-300,0.25,0.2
             <kind>1</kind>
             <string>/// draw player mat
 draw_sprite_ext(sprite8_blue_player_mat, 0, view_hview[view_current]+170,500,0.25, 0.25, 0, c_white, 1);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// draw cards in play
+if(cards_played &gt; 0){
+    
+    for(i=0;i&lt;=cards_played-process_played;i++){
+        j = i % 3;
+        factor = 93.5 *j;
+        if(i&lt;=2){
+            yfactor = 0;
+        }else{
+            yfactor = 143.5;
+        }
+            if(played[i] =="ARSENIC"){
+                draw_sprite_ext(sprite7_ArsenicF,0,view_xview[view_current]+1025+factor,y+383.5+yfactor,0.1, 0.1, 0, c_white, 1);
+            }else if(played[i] =="SULFUR"){
+                draw_sprite_ext(sprite24_Sulfur,0,view_xview[view_current]+1025+factor,y+383.5+yfactor,0.1, 0.1, 0, c_white, 1);    
+            }else if(played[i] =="MAGNESIUM"){
+                draw_sprite_ext(sprite15_Magnesium,0,view_xview[view_current]+1025+factor,y+383.5+yfactor,0.1, 0.1, 0, c_white, 1);    
+            }else if(played[i] =="ZINC"){
+                draw_sprite_ext(sprite29_Zinc,0,view_xview[view_current]+1025+factor,y+383.5+yfactor,0.1, 0.1, 0, c_white, 1);    
+            }else if(played[i] =="AIR"){
+                draw_sprite_ext(sprite1_Air,0,view_xview[view_current]+1025+factor,y+383.5+yfactor,0.1, 0.1, 0, c_white, 1);    
+            }else if(played[i] =="EARTH"){
+                draw_sprite_ext(sprite10_earth,0,view_xview[view_current]+1025+factor,y+383.5+yfactor,0.1, 0.1, 0, c_white, 1);    
+            }else if(played[i] =="FIRE"){
+                draw_sprite_ext(sprite2_Alchemy_fire_final,0,view_xview[view_current]+1025+factor,y+383.5+yfactor,0.1, 0.1, 0, c_white, 1);    
+            }else if(played[i] =="WATER"){
+                draw_sprite_ext(sprite27_Water,0,view_xview[view_current]+1025+factor,y+383.5+yfactor,0.1, 0.1, 0, c_white, 1);    
+            }else if(played[i] =="PHILO"){
+                draw_sprite_ext(sprite19_PhilosophersStone,0,view_xview[view_current]+1025+factor,y+383.5+yfactor,0.1, 0.1, 0, c_white, 1);    
+            }else if(played[i] =="I"){
+                draw_sprite_ext(sprite12_Incineration,0,view_xview[view_current]+1025+factor,y+383.5+yfactor,0.1, 0.1, 0, c_white, 1);    
+            }else if(played[i] =="D"){
+                draw_sprite_ext(sprite9_Distillation,0,view_xview[view_current]+1025+factor,y+383.5+yfactor,0.1, 0.1, 0, c_white, 1);    
+            }else if(played[i] =="T"){
+                draw_sprite_ext(sprite26_transformation,0,view_xview[view_current]+1025+factor,y+383.5+yfactor,0.1, 0.1, 0, c_white, 1);    
+            }
+    }
+}
 </string>
           </argument>
         </arguments>

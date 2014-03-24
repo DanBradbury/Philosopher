@@ -274,12 +274,21 @@ if(selected != -1 &amp;&amp; mouse_check_button(mb_left) &amp;&amp; (global._pha
     }
 }else if(selected != -1 &amp;&amp; mouse_check_button(mb_left) &amp;&amp; global._phase == "DISCARD"){
     hand_size -= 1;
+    
+    // add to the appropriate discard pile
+    t = ds_list_find_value(hand, selected);
+    if(t=="I" || t=="T" || t=="D"){
+        ds_list_add(obj_process_deck.discard, t);
+    }else{
+        ds_list_add(obj_element_deck.discard, t);
+    }
+    
     ds_list_delete(hand, selected);
     //TODO: put the discarded into the discard pile
     selected = -1;
     global._active_phase = global._phase;
     global._phase = "IDLE";
-    alarm[1] = 10;
+    alarm[1] = 10;    
 }
 </string>
           </argument>

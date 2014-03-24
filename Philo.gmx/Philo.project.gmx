@@ -72,7 +72,6 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
-    <room>rooms\analysis</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

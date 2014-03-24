@@ -129,7 +129,7 @@ global.p1_transLevel = 0;
 selected = -1;
 for(i=0;i&lt;hand_size;i++){
     factor = 100*i;
-    if(mouse_x &gt; view_xview[view_current]+view_wview[view_current]/2-300-124+factor &amp;&amp; mouse_x &lt; view_xview[view_current]+view_wview[view_current]/2-300+124+factor &amp;&amp; mouse_y &gt; y+400-214 &amp;&amp; mouse_y &lt; 400+ 428-214){
+    if(mouse_x &gt; view_xview[view_current]+view_wview[view_current]/2-350-124+factor &amp;&amp; mouse_x &lt; view_xview[view_current]+view_wview[view_current]/2-350+124+factor &amp;&amp; mouse_y &gt; y+400-214 &amp;&amp; mouse_y &lt; 400+ 428-214){
         selected = i;
     }
 }
@@ -435,29 +435,29 @@ for(q=0;q&lt;hand_size;q++){
     
         
     if(ds_list_find_value(hand, q) =="ARSENIC"){
-        draw_sprite_ext(sprite7_ArsenicF,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);
+        draw_sprite_ext(sprite7_ArsenicF,0,view_xview[view_current]+view_wview[view_current]/2+factor-350,y+400,0.3, 0.3, rotation, c_white, 1);
     }else if(ds_list_find_value(hand, q) =="SULFUR"){
-        draw_sprite_ext(sprite24_Sulfur,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
+        draw_sprite_ext(sprite24_Sulfur,0,view_xview[view_current]+view_wview[view_current]/2+factor-350,y+400,0.3, 0.3, rotation, c_white, 1);    
     }else if(ds_list_find_value(hand, q) =="MAGNESIUM"){
-        draw_sprite_ext(sprite15_Magnesium,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
+        draw_sprite_ext(sprite15_Magnesium,0,view_xview[view_current]+view_wview[view_current]/2+factor-350,y+400,0.3, 0.3, rotation, c_white, 1);    
     }else if(ds_list_find_value(hand, q) =="ZINC"){
-        draw_sprite_ext(sprite29_Zinc,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
+        draw_sprite_ext(sprite29_Zinc,0,view_xview[view_current]+view_wview[view_current]/2+factor-350,y+400,0.3, 0.3, rotation, c_white, 1);    
     }else if(ds_list_find_value(hand, q) =="AIR"){
-        draw_sprite_ext(sprite1_Air,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
+        draw_sprite_ext(sprite1_Air,0,view_xview[view_current]+view_wview[view_current]/2+factor-350,y+400,0.3, 0.3, rotation, c_white, 1);    
     }else if(ds_list_find_value(hand, q) =="EARTH"){
-        draw_sprite_ext(sprite10_earth,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
+        draw_sprite_ext(sprite10_earth,0,view_xview[view_current]+view_wview[view_current]/2+factor-350,y+400,0.3, 0.3, rotation, c_white, 1);    
     }else if(ds_list_find_value(hand, q) =="FIRE"){
-        draw_sprite_ext(sprite2_Alchemy_fire_final,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
+        draw_sprite_ext(sprite2_Alchemy_fire_final,0,view_xview[view_current]+view_wview[view_current]/2+factor-350,y+400,0.3, 0.3, rotation, c_white, 1);    
     }else if(ds_list_find_value(hand, q) =="WATER"){
-        draw_sprite_ext(sprite27_Water,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
+        draw_sprite_ext(sprite27_Water,0,view_xview[view_current]+view_wview[view_current]/2+factor-350,y+400,0.3, 0.3, rotation, c_white, 1);    
     }else if(ds_list_find_value(hand, q) =="PHILO"){
-        draw_sprite_ext(sprite19_PhilosophersStone,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
+        draw_sprite_ext(sprite19_PhilosophersStone,0,view_xview[view_current]+view_wview[view_current]/2+factor-350,y+400,0.3, 0.3, rotation, c_white, 1);    
     }else if(ds_list_find_value(hand, q) == "T"){
-        draw_sprite_ext(sprite26_transformation,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
+        draw_sprite_ext(sprite26_transformation,0,view_xview[view_current]+view_wview[view_current]/2+factor-350,y+400,0.3, 0.3, rotation, c_white, 1);    
     }else if(ds_list_find_value(hand, q) == "D"){
-        draw_sprite_ext(sprite9_Distillation,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);        
+        draw_sprite_ext(sprite9_Distillation,0,view_xview[view_current]+view_wview[view_current]/2+factor-350,y+400,0.3, 0.3, rotation, c_white, 1);        
     }else if(ds_list_find_value(hand, q) == "I"){
-        draw_sprite_ext(sprite12_Incineration,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);        
+        draw_sprite_ext(sprite12_Incineration,0,view_xview[view_current]+view_wview[view_current]/2+factor-350,y+400,0.3, 0.3, rotation, c_white, 1);        
     }
     draw_set_color(c_white);
     draw_text( view_xview[view_current]+view_wview[view_current]/2+factor-350,y+150, string(ds_list_find_value(hand,q)) );    
@@ -474,31 +474,31 @@ if(global._phase == "FORMULATION" || global._phase == "DISCARD" || global._phase
 if(selected != -1){
 factor = selected*100; rotation = 0;
     if(ds_list_find_value(hand, selected) =="ARSENIC"){
-        draw_sprite_ext(sprite7_ArsenicF,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);
+        draw_sprite_ext(sprite7_ArsenicF,0,view_xview[view_current]+view_wview[view_current]/2+factor-350,y+400,0.3, 0.3, rotation, c_white, 1);
     }else if(ds_list_find_value(hand, selected) =="SULFUR"){
-        draw_sprite_ext(sprite24_Sulfur,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
+        draw_sprite_ext(sprite24_Sulfur,0,view_xview[view_current]+view_wview[view_current]/2+factor-350,y+400,0.3, 0.3, rotation, c_white, 1);    
     }else if(ds_list_find_value(hand, selected) =="MAGNESIUM"){
-        draw_sprite_ext(sprite15_Magnesium,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
+        draw_sprite_ext(sprite15_Magnesium,0,view_xview[view_current]+view_wview[view_current]/2+factor-350,y+400,0.3, 0.3, rotation, c_white, 1);    
     }else if(ds_list_find_value(hand, selected) =="ZINC"){
-        draw_sprite_ext(sprite29_Zinc,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
+        draw_sprite_ext(sprite29_Zinc,0,view_xview[view_current]+view_wview[view_current]/2+factor-350,y+400,0.3, 0.3, rotation, c_white, 1);    
     }else if(ds_list_find_value(hand, selected) =="AIR"){
-        draw_sprite_ext(sprite1_Air,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
+        draw_sprite_ext(sprite1_Air,0,view_xview[view_current]+view_wview[view_current]/2+factor-350,y+400,0.3, 0.3, rotation, c_white, 1);    
     }else if(ds_list_find_value(hand, selected) =="EARTH"){
-        draw_sprite_ext(sprite10_earth,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
+        draw_sprite_ext(sprite10_earth,0,view_xview[view_current]+view_wview[view_current]/2+factor-350,y+400,0.3, 0.3, rotation, c_white, 1);    
     }else if(ds_list_find_value(hand, selected) =="FIRE"){
-        draw_sprite_ext(sprite2_Alchemy_fire_final,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
+        draw_sprite_ext(sprite2_Alchemy_fire_final,0,view_xview[view_current]+view_wview[view_current]/2+factor-350,y+400,0.3, 0.3, rotation, c_white, 1);    
     }else if(ds_list_find_value(hand, selected) =="WATER"){
-        draw_sprite_ext(sprite27_Water,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
+        draw_sprite_ext(sprite27_Water,0,view_xview[view_current]+view_wview[view_current]/2+factor-350,y+400,0.3, 0.3, rotation, c_white, 1);    
     }else if(ds_list_find_value(hand, selected) =="PHILO"){
-        draw_sprite_ext(sprite19_PhilosophersStone,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
+        draw_sprite_ext(sprite19_PhilosophersStone,0,view_xview[view_current]+view_wview[view_current]/2+factor-350,y+400,0.3, 0.3, rotation, c_white, 1);    
     }else if(ds_list_find_value(hand, selected) == "T"){
-        draw_sprite_ext(sprite26_transformation,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);    
+        draw_sprite_ext(sprite26_transformation,0,view_xview[view_current]+view_wview[view_current]/2+factor-350,y+400,0.3, 0.3, rotation, c_white, 1);    
     }else if(ds_list_find_value(hand, selected) == "D"){
-        draw_sprite_ext(sprite9_Distillation,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);        
+        draw_sprite_ext(sprite9_Distillation,0,view_xview[view_current]+view_wview[view_current]/2+factor-350,y+400,0.3, 0.3, rotation, c_white, 1);        
     }else if(ds_list_find_value(hand, selected) == "I"){
-        draw_sprite_ext(sprite12_Incineration,0,view_xview[view_current]+view_wview[view_current]/2+factor-300,y+400,0.3, 0.3, rotation, c_white, 1);        
+        draw_sprite_ext(sprite12_Incineration,0,view_xview[view_current]+view_wview[view_current]/2+factor-350,y+400,0.3, 0.3, rotation, c_white, 1);        
     }    
-    draw_rectangle(view_xview[view_current]+view_wview[view_current]/2-300-124+factor,y+400-214, view_xview[view_current]+view_wview[view_current]/2-300+124+factor,y+400+ 428-214,true);
+    draw_rectangle(view_xview[view_current]+view_wview[view_current]/2-350-124+factor,y+400-214, view_xview[view_current]+view_wview[view_current]/2-350+124+factor,y+400+ 428-214,true);
 }
 
 
@@ -560,6 +560,28 @@ draw_sprite_ext(sprite_play,global._valid_play,10, view_hview[view_current]-300,
 draw_sprite_ext(sprite_skip,0,10,view_hview[view_current]-150,0.5,0.5,0,c_white,1);
 draw_sprite_ext(sprite_return_hand,0,10+80,view_hview[view_current]-300,0.25,0.25,0,c_white,1);
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// draw player mat
+draw_sprite_ext(sprite8_blue_player_mat, 0, view_hview[view_current]+170,500,0.25, 0.25, 0, c_white, 1);
 </string>
           </argument>
         </arguments>
